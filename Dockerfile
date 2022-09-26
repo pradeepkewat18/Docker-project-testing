@@ -1,4 +1,10 @@
-FROM quay.io/rhn_support_bsingh/centos:centos7
-RUN  yum install httpd -y
-RUN  echo "welcome to india" >/var/www/html/index.html
-CMD  ["/usr/sbin/httpd","-D","FOREGROUND"]
+FROM centos:latest
+RUN  yum install httpd zip unzip -y
+ADD  https://www.free-css.com/assets/files/free-css-templates/download/page283/milina.zip /var/www/html
+WORKDIR  /var/www/html/
+RUN unzip milina.zip
+RUN rm -rf milina.zip &&\
+    cp -rf milina/* . &&\
+    rm -rf milina
+EXPOSE 80
+CMD ["/etc/sbin/httpd" , "-D" ,"FOREGROUND"]
