@@ -6,5 +6,6 @@ RUN unzip milina.zip
 RUN rm -rf milina.zip &&\
     cp -rf milina/* . &&\
     rm -rf milina
+    
 EXPOSE 80
 CMD ["/etc/sbin/httpd" , "-D" ,"FOREGROUND"]
