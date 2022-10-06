@@ -1,5 +1,5 @@
 FROM centos:latest
-RUN  yum install httpd zip unzip -y
+RUN  yum install apache2 zip unzip -y
 ADD  https://www.free-css.com/assets/files/free-css-templates/download/page283/milina.zip /var/www/html
 WORKDIR  /var/www/html/
 RUN unzip milina.zip
